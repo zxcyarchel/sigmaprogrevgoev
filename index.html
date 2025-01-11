@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Прогрів Гоїв</title>
+    <style>
+        /* Загальні стилі */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f7f6;
+            color: #333;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 36px;
+            font-weight: bold;
+        }
+
+        nav {
+            background-color: #444;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            margin: 0 20px;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #28a745;
+        }
+
+        .cart-button {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #28a745;
+            color: white;
+            padding: 15px 25px;
+            border: none;
+            border-radius: 50%;
+            font-size: 18px;
+            cursor: pointer;
+            z-index: 10;
+            transition: background-color 0.3s ease;
+        }
+
+        .cart-button:hover {
+            background-color: #218838;
+        }
+
+        main {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 30px 10px;
+        }
+
+        /* Стиль карток товарів */
+        .product {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 30%;
+            margin: 15px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s ease-in-out;
+            overflow: hidden;
+        }
+
+        .product:hover {
+            transform: scale(1.05);
+        }
+
+        .product img {
+            max-width: 100%;
+            height: auto; /* Тепер зображення адаптується, зберігаючи співвідношення сторін */
+            border-radius: 8px;
+        }
+
+        .product h3 {
+            font-size: 24px;
+            color: #444;
+            margin: 15px 0;
+        }
+
+        .product p {
+            font-size: 18px;
+            color: #777;
+        }
+
+        .product button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 15px;
+            transition: background-color 0.3s ease;
+        }
+
+        .product button:hover {
+            background-color: #218838;
+        }
+
+        /* Стиль кошика */
+        .cart {
+            background-color: #fff;
+            padding: 20px;
+            margin-top: 30px;
+            text-align: center;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            margin: 30px auto;
+            transition: all 0.3s ease;
+        }
+
+        .cart h2 {
+            font-size: 28px;
+            color: #333;
+        }
+
+        .cart p {
+            font-size: 20px;
+            color: #777;
+        }
+
+        .cart button {
+            background-color: #007bff;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .cart button:hover {
+            background-color: #0056b3;
+        }
+
+        .cart-items {
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        .cart-items ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .cart-items li {
+            font-size: 18px;
+            margin: 10px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .cart-items button {
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        .cart-items button:hover {
+            background-color: #c82333;
+        }
+
+        /* Адаптивність */
+        @media screen and (max-width: 768px) {
+            .product {
+                width: 45%;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .product {
+                width: 100%;
+            }
+
+            .cart-button {
+                font-size: 15px;
+                padding: 10px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Прогрів Гоїв</h1>
+</header>
+
+<nav>
+    <a href="#">Товари</a>
+    <a href="#">Контакти</a>
+    <a href="#cart-section">Кошик</a>
+</nav>
+
+<!-- Кнопка Кошика -->
+<button class="cart-button" onclick="window.location.hash = '#cart-section'">🛒</button>
+
+<main>
+    <h2 style="width: 100%; text-align: center; font-size: 28px;">Наші Товари</h2>
+
+    <!-- Товар 1: Мінєт від Аліни Олексіївни -->
+    <div class="product" data-name="Мінєт від Аліни Олексіївни" data-price="200">
+        <h3>Мінєт від Аліни Олексіївни</h3>
+        <img src="product1.jpg" alt="Мінєт від Аліни Олексіївни">
+        <p>Ціна: 200 гривень</p>
+        <button>Додати в кошик</button>
+    </div>
+
+    <!-- Товар 2: По ЄБалу від Кондака -->
+    <div class="product" data-name="По ЄБалу від Кондака" data-price="20">
+        <h3>По ЄБалу від Кондака</h3>
+        <img src="product2.jpg" alt="По ЄБалу від Кондака">
+        <p>Ціна: 20 гривень</p>
+        <button>Додати в кошик</button>
+    </div>
+
+    <!-- Товар 3: Аліна Олексіївна на час -->
+    <div class="product" data-name="Аліна Олексіївна на час" data-price="500">
+        <h3>Аліна Олексіївна на час</h3>
+        <img src="product3.jpg" alt="Аліна Олексіївна на час">
+        <p>Ціна: 500 гривень</p>
+        <button>Додати в кошик</button>
+    </div>
+
+    <!-- Товар 4: Папа кондака собутильнік -->
+    <div class="product" data-name="Папа кондака собутильнік" data-price="1000">
+        <h3>Папа кондака собутильнік</h3>
+        <img src="product4.jpg" alt="Папа кондака собутильнік">
+        <p>Ціна: 1000 гривень</p>
+        <button>Додати в кошик</button>
+    </div>
+
+    <!-- Товар 5: Сквэрт від Опішні -->
+    <div class="product" data-name="Сквэрт від Опішні" data-price="50">
+        <h3>Сквэрт від Опішні</h3>
+        <img src="product5.jpg" alt="Сквэрт від Опішні">
+        <p>Ціна: 50 гривень</p>
+        <button>Додати в кошик</button>
+    </div>
+</main>
+
+<div class="cart" id="cart-section">
+    <h2>Ваш Кошик</h2>
+    <div class="cart-items">
+        <ul id="cart-items-list">
+            <!-- Додані товари будуть тут -->
+        </ul>
+    </div>
+    <p id="total-price">Загальна сума: 0 гривень</p>
+    <button>Оформити замовлення</button>
+</div>
+
+<script>
+    const cartItems = [];
+
+    document.querySelectorAll('.product button').forEach(button => {
+        button.addEventListener('click', (event) => {
+            const product = event.target.closest('.product');
+            const name = product.getAttribute('data-name');
+            const price = parseFloat(product.getAttribute('data-price'));
+            cartItems.push({ name, price });
+            updateCart();
+        });
+    });
+
+    function updateCart() {
+        const cartItemsList = document.getElementById('cart-items-list');
+        const totalPriceElement = document.getElementById('total-price');
+
+        cartItemsList.innerHTML = ''; 
+
+        cartItems.forEach((item, index) => {
+            const listItem = document.createElement('li');
+            listItem.textContent = `${item.name} - ${item.price} грн`;
+
+            const removeButton = document.createElement("button");
+            removeButton.textContent = "Видалити";
+            removeButton.addEventListener("click", () => removeFromCart(index));
+
+            listItem.appendChild(removeButton);
+            cartItemsList.appendChild(listItem);
+        });
+
+        const totalPrice = cartItems.reduce((sum, item) => sum + item.price, 0);
+        totalPriceElement.textContent = `Загальна сума: ${totalPrice} гривень`;
+    }
+
+    function removeFromCart(index) {
+        cartItems.splice(index, 1);
+        updateCart();
+    }
+</script>
+
+</body>
+</html>
